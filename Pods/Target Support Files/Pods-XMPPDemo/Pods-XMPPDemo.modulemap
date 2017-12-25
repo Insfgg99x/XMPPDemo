@@ -1,0 +1,6 @@
+framework module Pods_XMPPDemo {
+  umbrella header "Pods-XMPPDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,44 @@
+PODS:
+  - CocoaAsyncSocket (7.6.2)
+  - CocoaLumberjack (3.3.0):
+    - CocoaLumberjack/Default (= 3.3.0)
+    - CocoaLumberjack/Extensions (= 3.3.0)
+  - CocoaLumberjack/Default (3.3.0)
+  - CocoaLumberjack/Extensions (3.3.0):
+    - CocoaLumberjack/Default
+  - CocoaLumberjack/Swift (3.3.0):
+    - CocoaLumberjack/Default
+  - KissXML (5.2.0)
+  - libidn (1.33)
+  - XMPPFramework/default (4.0):
+    - CocoaAsyncSocket (~> 7.6.0)
+    - CocoaLumberjack
+    - KissXML (~> 5.2.0)
+    - libidn (~> 1.33.0)
+  - XMPPFramework/Swift (4.0):
+    - CocoaLumberjack/Swift (~> 3.3.0)
+    - XMPPFramework/default
+
+DEPENDENCIES:
+  - XMPPFramework/Swift (from `https://github.com/robbiehanson/XMPPFramework.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  XMPPFramework:
+    :branch: master
+    :git: https://github.com/robbiehanson/XMPPFramework.git
+
+CHECKOUT OPTIONS:
+  XMPPFramework:
+    :commit: d52de9e2ca9f1a84ed377b42b5dba9ee5061e06a
+    :git: https://github.com/robbiehanson/XMPPFramework.git
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
+  CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
+  KissXML: 1c1eeeb6b94e4522cd2f2373e5d0d03c9227738f
+  libidn: 90fc1a62b60288dcf543f13f4ebca913f17d829f
+  XMPPFramework: 36b1a94ab8fb4292b6cad64ddfa8b452e58d6523
+
+PODFILE CHECKSUM: 3fd9633708d9b6fb5206b0af01f58a2e5d278132
+
+COCOAPODS: 1.1.1
