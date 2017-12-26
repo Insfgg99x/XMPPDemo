@@ -9,10 +9,11 @@
 import UIKit
 import XMPPFramework
 
-class IMManager: NSObject ,XMPPStreamDelegate {
+class IMManager: NSObject ,XMPPStreamDelegate ,XMPPRosterDelegate,XMPPRosterMemoryStorageDelegate,XMPPIncomingFileTransferDelegate{
 
     static let shared = IMManager.init()
     private var stream:XMPPStream = XMPPStream.init()
+    private var roster:XMPPRoster = XMPPRoster.init(rosterStorage: XMPPRosterMemoryStorage.init())
     private let queue = DispatchQueue.init(label: "stream", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
     //gateway
     func connect() {
@@ -22,13 +23,36 @@ class IMManager: NSObject ,XMPPStreamDelegate {
         stream.hostPort = 5222
         stream.myJID = jid
         stream.addDelegate(self, delegateQueue: queue)
+        
         let reconnect = XMPPReconnect.init()
         reconnect.activate(stream)
         reconnect.autoReconnect = true
+    
+        let autoping = XMPPAutoPing.init()
+        autoping.pingInterval = 4.8*60//heart beat 4.8min
+        autoping.respondsToQueries = true
+        autoping.activate(stream)
+        
+        let memerystore = XMPPRosterMemoryStorage.init()
+        roster = XMPPRoster.init(rosterStorage: memerystore!)
+        roster.activate(stream)
+        roster.addDelegate(self, delegateQueue: queue)
+        roster.autoFetchRoster = true
+        roster.autoAcceptKnownPresenceSubscriptionRequests = true//close auto accept friend apply
+        
+        let archivingstore = XMPPMessageArchivingCoreDataStorage.sharedInstance()
+        let archiving = XMPPMessageArchiving.init(messageArchivingStorage: archivingstore, dispatchQueue: queue)
+        archiving?.activate(stream)
+        
+        let transfer = XMPPIncomingFileTransfer.init(dispatchQueue: queue)
+        transfer.activate(stream)
+        transfer.addDelegate(self, delegateQueue: queue)
+        transfer.autoAcceptFileTransfers = true
+        
         do{ try stream.connect(withTimeout: TimeInterval(30)) } catch _ {}
     }
     func send(_ content:String) {
-        let targetId = XMPPJID(user: "yangwenq", domain: "caigouku.com", resource: nil)
+        let targetId = XMPPJID(user: "whxia", domain: "caigouku.com", resource: nil)
         let message = XMPPMessage.init(type: "chat", to: targetId)
         message.addBody(content)
         stream.send(message)
@@ -42,7 +66,7 @@ class IMManager: NSObject ,XMPPStreamDelegate {
         do{ try stream.authenticate(withPassword: "iosDev189") } catch{}
     }
     func xmppStream(_ sender: XMPPStream, didReceive message: XMPPMessage) {
-        print("收到消息：\(message)")
+        print("收到消息：\(message.name ?? "")\(message.body ?? "")")
     }
     func xmppStream(_ sender: XMPPStream, didSend message: XMPPMessage) {
         print("消息发送成功")
@@ -52,8 +76,15 @@ class IMManager: NSObject ,XMPPStreamDelegate {
     }
     func xmppStreamDidAuthenticate(_ sender: XMPPStream) {
         print("登录成功")
+        let presence = XMPPPresence.init()
+        presence.addChild(DDXMLNode.element(withName: "status", stringValue: "在线") as! DDXMLNode)
+        presence.addChild(DDXMLNode.element(withName: "show", stringValue: "xa") as! DDXMLNode)
+        stream.send(presence)
     }
     func xmppStream(_ sender: XMPPStream, didNotAuthenticate error: DDXMLElement) {
         print("登录失败：\(error)")
+    }
+    func xmppStream(_ sender: XMPPStream, didReceive presence: XMPPPresence) {
+        
     }
 }

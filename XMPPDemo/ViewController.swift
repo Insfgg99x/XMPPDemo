@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        IMManager.shared.send("山羊同学，你好！")
+        IMManager.shared.send("秋名山滑板少年，你好！")
     }
 }
 
