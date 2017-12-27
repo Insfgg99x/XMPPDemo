@@ -199,7 +199,6 @@ extension IMManager {
 }
 //MARK:incoming file
 extension IMManager {
-    
     func xmppIncomingFileTransfer(_ sender: XMPPIncomingFileTransfer!, didReceiveSIOffer offer: XMPPIQ!) {
         sender.acceptSIOffer(offer)
     }
