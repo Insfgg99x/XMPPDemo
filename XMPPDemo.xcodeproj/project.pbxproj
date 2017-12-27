@@ -22,6 +22,9 @@
 		C301C85C1FF0EBA600672D8D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C301C85B1FF0EBA000672D8D /* AudioToolbox.framework */; };
 		C301C85E1FF0EBB200672D8D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C301C85D1FF0EBAD00672D8D /* AVFoundation.framework */; };
 		C301C87A1FF0F12200672D8D /* IMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301C8791FF0F12200672D8D /* IMManager.swift */; };
+		C30359121FF38944000BB491 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C30359111FF38944000BB491 /* test.pdf */; };
+		C30359141FF396AF000BB491 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C30359131FF396AF000BB491 /* test.mp3 */; };
+		C30359161FF398F5000BB491 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = C30359151FF398F5000BB491 /* test.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		C301C85B1FF0EBA000672D8D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C301C85D1FF0EBAD00672D8D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C301C8791FF0F12200672D8D /* IMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMManager.swift; sourceTree = "<group>"; };
+		C30359111FF38944000BB491 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
+		C30359131FF396AF000BB491 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
+		C30359151FF398F5000BB491 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		EE8D54340D75303ABF3A7C2F /* Pods-XMPPDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPDemo/Pods-XMPPDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,7 @@
 		C301C7FC1FF0E58300672D8D = {
 			isa = PBXGroup;
 			children = (
+				C30359101FF3893D000BB491 /* Resource */,
 				C301C8071FF0E58300672D8D /* XMPPDemo */,
 				C301C8061FF0E58300672D8D /* Products */,
 				C301C84E1FF0EB5600672D8D /* Frameworks */,
@@ -121,6 +128,16 @@
 				6F36C982C2AED5D75B3ED181 /* Pods_XMPPDemo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C30359101FF3893D000BB491 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C30359151FF398F5000BB491 /* test.png */,
+				C30359131FF396AF000BB491 /* test.mp3 */,
+				C30359111FF38944000BB491 /* test.pdf */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,9 +202,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30359121FF38944000BB491 /* test.pdf in Resources */,
+				C30359141FF396AF000BB491 /* test.mp3 in Resources */,
 				C301C8131FF0E58300672D8D /* LaunchScreen.storyboard in Resources */,
 				C301C8101FF0E58300672D8D /* Assets.xcassets in Resources */,
 				C301C80E1FF0E58300672D8D /* Main.storyboard in Resources */,
+				C30359161FF398F5000BB491 /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7CA89CVK8A;
 				INFOPLIST_FILE = XMPPDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sencent.XMPPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -405,6 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7CA89CVK8A;
 				INFOPLIST_FILE = XMPPDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sencent.XMPPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
